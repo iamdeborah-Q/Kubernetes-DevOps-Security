@@ -21,7 +21,7 @@ pipeline {
         }
       }
 
-      tage ('Mutation Tests - PIT') {
+      stage ('Mutation Tests - PIT') {
           steps {
             sh "mvn org.pitest:pitest-maven:mutationCoverage"
           }
