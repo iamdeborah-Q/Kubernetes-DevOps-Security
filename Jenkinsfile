@@ -31,12 +31,23 @@ pipeline {
             }
           }
         }
-        
+
         stage('SonarQube - SAST') {
           steps {
             sh "mvn sonar:sonar -Dsonar.projectKey=numeric-application -Dsonar.projectName='numeric-application' -Dsonar.host.url=http://devsecops-projects.eastus.cloudapp.azure.com:9000 -Dsonar.token=sqp_b737f388ff1f4d1a72e31b101c403e58776ca9aa"
           }
         }
+
+      stage( 'Vulnerability Scan - Docker') {
+        steps {
+          sh "mvn dependency-check:check"            
+        }
+        post {
+          always {
+            dependencyCheckPublisher pattern: 'target/dependency-check-report.xml'            
+          }
+        }
+      }  
 
       stage('Docker Build and Push') {
         steps {
