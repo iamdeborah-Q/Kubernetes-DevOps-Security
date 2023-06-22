@@ -63,7 +63,7 @@ pipeline {
        }
      }  
 
-      stage('Docker Build and Push') {
+    stage('Docker Build and Push') {
         steps {
           withDockerRegistry([credentialsId: "docker-hub", url: ""]) {
             sh 'printenv'
@@ -73,7 +73,7 @@ pipeline {
         }
       }
 
-      stage('Vulnerability Scan - Kubernetes') {
+    stage('Vulnerability Scan - Kubernetes') {
       steps {
         parallel(
           "OPA Scan": {
@@ -120,7 +120,8 @@ pipeline {
             throw e
           }
         }
-      }
+    }
+
     stage('OWASP ZAP - DAST') {
       steps {
         withKubeConfig([credentialsId: 'kubeconfig']) {
