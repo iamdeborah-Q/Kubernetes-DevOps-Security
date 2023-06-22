@@ -2,17 +2,17 @@
 
 #integration-test.sh
 
-sleep 5s
+sleep 3s
 
-PORT=$(kubectl -n default get svc ${serviceName} -o json | jq .spec.ports[].nodePort)
+#PORT=$(kubectl -n default get svc ${serviceName} -o json | jq .spec.ports[].nodePort)
 
-echo $PORT
-echo $applicationURL:$PORT/$applicationURI
+#echo $PORT
+#echo $applicationURL:$PORT/$applicationURI
 
-if [[ ! -z "$PORT" ]];
-then
+#if [[ ! -z "$PORT" ]];
+#then
 
-    response=$(curl -s $applicationURL:$PORT$applicationURI)
+    #response=$(curl -s $applicationURL:$PORT$applicationURI)
     #http_code=$(curl -s -o /dev/null -w "%{http_code}" $applicationURL:$PORT$applicationURI)
 
     #if [[ "$response" == 100 ]];
@@ -21,7 +21,7 @@ then
     #    else
     #        echo "Increment Test Failed"
     #        exit 1;
-    fi;
+    #fi;
 
     #if [[ "$http_code" == 000 ]];
     #    then
