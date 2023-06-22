@@ -18,6 +18,7 @@ spec:
       containers:
       - image: replace
         name: devsecops-container
+        readOnlyRootFilesystem: true
         
 ---
 apiVersion: v1
