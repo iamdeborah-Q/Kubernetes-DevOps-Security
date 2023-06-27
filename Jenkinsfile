@@ -10,7 +10,6 @@ pipeline {
     applicationURI = "/increment/99"
   }
 
-  stage {
 
   stages {
       stage('Build Artifact') {
@@ -132,7 +131,6 @@ pipeline {
       }
     }
   }
- }
 }
 
 
