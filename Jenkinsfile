@@ -1,3 +1,5 @@
+@Library('slack') _
+
 pipeline {
   agent any
 
@@ -130,6 +132,7 @@ pipeline {
       }
     }
   }
+    sendNotification currentBuild.result
 }
 
 
